@@ -10,21 +10,21 @@ namespace HotelReservationSystem
 
         public void addHotel()
         {
-            hotelList.Add(new Hotel("Lakewood", 110));
-            hotelList.Add(new Hotel("Bridgewood", 160));
-            hotelList.Add(new Hotel("Ridgewood", 220));
+            hotelList.Add(new Hotel("Lakewood", 110, 90));
+            hotelList.Add(new Hotel("Bridgewood", 160, 50));
+            hotelList.Add(new Hotel("Ridgewood", 220, 150));
             Console.WriteLine("Hotels are added");
         }
 
         public string findCheapestHotel()
         {
             string hotelName = hotelList[1].Name;
-            int rate = hotelList[1].Rate;
+            int rate = hotelList[1].WeekdayRate;
             hotelList.ForEach(hotel =>
             {
-                if(hotel.Rate < rate)
+                if(hotel.WeekdayRate < rate)
                 {
-                    rate = hotel.Rate;
+                    rate = hotel.WeekdayRate;
                     hotelName = hotel.Name;
                 }
             });
