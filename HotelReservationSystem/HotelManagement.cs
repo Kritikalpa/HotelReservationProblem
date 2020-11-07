@@ -15,5 +15,20 @@ namespace HotelReservationSystem
             hotelList.Add(new Hotel("Ridgewood", 220));
             Console.WriteLine("Hotels are added");
         }
+
+        public string findCheapestHotel()
+        {
+            string hotelName = hotelList[1].Name;
+            int rate = hotelList[1].Rate;
+            hotelList.ForEach(hotel =>
+            {
+                if(hotel.Rate < rate)
+                {
+                    rate = hotel.Rate;
+                    hotelName = hotel.Name;
+                }
+            });
+            return hotelName;
+        }
     }
 }
