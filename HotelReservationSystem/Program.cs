@@ -12,6 +12,7 @@ namespace HotelReservationSystem
             hotelManagement.addHotel();
             string cheapestHotel = hotelManagement.findCheapestHotel();
             Console.WriteLine("Cheapest Hotel : " + cheapestHotel);
+            hotelManagement.findCheapTotalPrice();
         }
     }
 }
