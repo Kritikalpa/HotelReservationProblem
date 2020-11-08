@@ -7,14 +7,37 @@ namespace HotelReservationSystem
 {
     public class HotelManagement
     {
+        CustomerType customerType;
+
         List<Hotel> hotelList = new List<Hotel>();
 
+        public HotelManagement(CustomerType customerType)
+        {
+            this.customerType = customerType;
+        }
         public void addHotel()
         {
-            hotelList.Add(new Hotel("Lakewood", 110, 90, 3));
-            hotelList.Add(new Hotel("Bridgewood", 150, 50, 4));
-            hotelList.Add(new Hotel("Ridgewood", 220, 150, 5));
+            if (this.customerType.Equals(CustomerType.NORMAL))
+            {
+                hotelList.Add(new Hotel("Lakewood", 110, 90, 3));
+                hotelList.Add(new Hotel("Bridgewood", 150, 50, 4));
+                hotelList.Add(new Hotel("Ridgewood", 220, 150, 5));
+            }
+            else if (this.customerType.Equals(CustomerType.REWARD))
+            {
+                hotelList.Add(new Hotel("Lakewood", 80, 80, 3));
+                hotelList.Add(new Hotel("Bridgewood", 110, 50, 4));
+                hotelList.Add(new Hotel("Ridgewood", 100, 40, 5));
+            }
             Console.WriteLine("Hotels are added");
+        }
+
+        public void viewHotels()
+        {
+            foreach(Hotel hotel in hotelList)
+            {
+                Console.WriteLine(hotel.toString());
+            }
         }
 
         public string findCheapestHotel()

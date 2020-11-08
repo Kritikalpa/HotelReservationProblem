@@ -19,5 +19,10 @@ namespace HotelReservationSystem
             this.WeekendRate = WeekendRate;
             this.Rating = Rating;
         }
+
+        public string toString()
+        {
+            return "Hotel : " + this.Name + ", Weekday Rate : " + this.WeekdayRate + ", Weekend Rate : " + this.WeekendRate + ", Rating : " + this.Rating;
+        }
     }
 }

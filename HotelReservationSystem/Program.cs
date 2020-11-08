@@ -8,12 +8,16 @@ namespace HotelReservationSystem
         {
             Console.WriteLine("Welcome to Hotel Reservation program");
 
-            HotelManagement hotelManagement = new HotelManagement();
-            hotelManagement.addHotel();
-            string cheapestHotel = hotelManagement.findCheapestHotel();
-            Console.WriteLine("Cheapest Hotel : " + cheapestHotel);
-            hotelManagement.findCheapTotalPrice();
-            hotelManagement.bestRatedHotelForDateRange();
+            //HotelManagement hotelManagementNormal = new HotelManagement(CustomerType.NORMAL);
+            //hotelManagementNormal.addHotel();
+            //hotelManagementNormal.viewHotels();
+            //string cheapestHotel = hotelManagementNormal.findCheapestHotel();
+            //Console.WriteLine("Cheapest Hotel : " + cheapestHotel);
+            //hotelManagementNormal.findCheapTotalPrice();
+            //hotelManagementNormal.bestRatedHotelForDateRange();
+            HotelManagement hotelManagementReward = new HotelManagement(CustomerType.REWARD);
+            hotelManagementReward.addHotel();
+            hotelManagementReward.viewHotels();
         }
     }
 }
