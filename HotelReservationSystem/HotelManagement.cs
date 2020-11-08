@@ -34,7 +34,7 @@ namespace HotelReservationSystem
 
         public void findCheapTotalPrice()
         {
-            Dictionary<string, int> hotelToRateMap = new Dictionary<string, int>();
+            Dictionary<Hotel, int> hotelToRateMap = new Dictionary<Hotel, int>();
             int totalRate = 0;
             Console.WriteLine("Enter the start date : ");
             DateTime startDate = DateTime.Parse(Console.ReadLine());
@@ -54,15 +54,17 @@ namespace HotelReservationSystem
                     }
                     i = i.AddDays(1);
                 }
-                hotelToRateMap.Add(hotel.Name, totalRate);
+                hotelToRateMap.Add(hotel, totalRate);
                 totalRate = 0;
             }
             int lowestRate = hotelToRateMap.Min(x => x.Value);
             var cheapestHotels = hotelToRateMap.Where(x => x.Value == lowestRate);
+            int highestRatingInCheapHotels = cheapestHotels.Max(x => x.Key.Rating);
+            var hotels = cheapestHotels.Where(x => x.Key.Rating == highestRatingInCheapHotels);
             Console.WriteLine("Cheapest Hotels to stay in date range are : ");
-            foreach(var hotel in cheapestHotels)
+            foreach(var hotel in hotels)
             {
-                Console.WriteLine(hotel.Key);
+                Console.WriteLine(hotel.Key.Name);
             }
         }
     }
