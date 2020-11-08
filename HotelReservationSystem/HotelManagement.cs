@@ -64,7 +64,35 @@ namespace HotelReservationSystem
             Console.WriteLine("Cheapest Hotels to stay in date range are : ");
             foreach(var hotel in hotels)
             {
-                Console.WriteLine(hotel.Key.Name);
+                Console.WriteLine(hotel.Key.Name + ", Rating : " + hotel.Key.Rating + ", Total Price : " + hotel.Value);
+            }
+        }
+
+        public void bestRatedHotelForDateRange()
+        {
+            var hotels = hotelList.Where(hotel => hotel.Rating == hotelList.Max(x => x.Rating));
+            int totalRate = 0;
+            Console.WriteLine("Enter the start date : ");
+            DateTime startDate = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the end date : ");
+            DateTime endDate = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Highest Rated hotels and total Price for date range : ");
+            foreach (Hotel hotel in hotels)
+            {
+                for (DateTime i = startDate; i <= endDate;)
+                {
+                    if (i.DayOfWeek == DayOfWeek.Saturday || i.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        totalRate += hotel.WeekendRate;
+                    }
+                    else
+                    {
+                        totalRate += hotel.WeekdayRate;
+                    }
+                    i = i.AddDays(1);
+                }
+                Console.WriteLine(hotel.Name + ", Rating : " + hotel.Rating + ", Total Price : " + totalRate);
+                totalRate = 0;
             }
         }
     }
